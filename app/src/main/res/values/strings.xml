@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Cleverlance test</string>
-    <string name="name_hint">Username</string>
+    <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
     <string name="download_button_text">Download</string>
-    <string name="general_download_error_message">Error occurred during image download</string>
+    <string name="general_error_message">Error occurred</string>
+    <string name="empty_input_error_message">Input %1$s can not be empty</string>
 </resources>

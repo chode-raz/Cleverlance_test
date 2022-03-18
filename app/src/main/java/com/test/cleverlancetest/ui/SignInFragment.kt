@@ -49,13 +49,17 @@ class SignInFragment : Fragment() {
         }
 
         viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
-            showToast(message)
+            showErrorMessage(message)
         }
 
         binding.downloadButton.setOnClickListener {
             val username = binding.nameEditText.text.toString()
-            val password = binding.passwordEditText.text.toString().lowercase()
-            viewModel.downloadImage(password, username)
+            val password = binding.passwordEditText.text.toString()
+            if (isInputNotEmpty(username, getString(R.string.username_hint)) &&
+                isInputNotEmpty(password, getString(R.string.password_hint))
+            ) {
+                viewModel.downloadImage(password, username)
+            }
         }
     }
 
@@ -64,14 +68,21 @@ class SignInFragment : Fragment() {
         _binding = null
     }
 
-    private fun showToast(message: String?) {
+    private fun showErrorMessage(message: String?) {
         if (message.isNullOrBlank()) {
             Snackbar.make(
-                binding.root, R.string.general_download_error_message, LENGTH_SHORT
+                binding.root, R.string.general_error_message, LENGTH_SHORT
             ).show()
         } else {
             Snackbar.make(binding.root, message, LENGTH_SHORT).show()
         }
     }
 
+    private fun isInputNotEmpty(input: String, fieldName: String): Boolean {
+        if (input.isEmpty()) {
+            showErrorMessage(getString(R.string.empty_input_error_message, fieldName))
+            return false
+        }
+        return true
+    }
 }
