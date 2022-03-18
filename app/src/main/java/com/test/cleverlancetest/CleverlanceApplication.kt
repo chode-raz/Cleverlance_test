@@ -1,9 +1,7 @@
 package com.test.cleverlancetest
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class CleverlanceApplication : Application() {
-
-
-
-}
+@HiltAndroidApp
+class CleverlanceApplication : Application()

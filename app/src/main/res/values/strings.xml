@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Cleverlance test</string>
+    <string name="name_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="download_button_text">Download</string>
+    <string name="general_download_error_message">Error occurred during image download</string>
 </resources>
